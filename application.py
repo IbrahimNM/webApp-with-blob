@@ -17,7 +17,7 @@ def run_sample():
     try:
         # Create the BlockBlockService that is used to call the Blob service for the storage account
         block_blob_service = BlockBlobService(
-            account_name=cons.ACCOUNT_NAME, account_key=cons.ACCOUNT_KEY)
+            account_name='ibrahim20', account_key='wMCFPXsA/klI6OGSrmdc1jgFIAJa3bRyD9mhtH31fS9OLCnlhGL8Er/TSc9uKrMMt1GYinFBkIuC5lP2krt/IA==')
 
         # Create a container called 'quickstartblobs'.
         container_name = 'python_flask_demo'
