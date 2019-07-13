@@ -1,8 +1,9 @@
 from flask import Flask
-import oa
+import os
 import uuid
 import sys
 from azure.storage.blob import BlockBlobService, PublicAccess
+import constants as cons
 app = Flask(__name__)
 
 
@@ -16,10 +17,10 @@ def run_sample():
     try:
         # Create the BlockBlockService that is used to call the Blob service for the storage account
         block_blob_service = BlockBlobService(
-            account_name='ibrahim20', account_key='wMCFPXsA/klI6OGSrmdc1jgFIAJa3bRyD9mhtH31fS9OLCnlhGL8Er/TSc9uKrMMt1GYinFBkIuC5lP2krt/IA==')
+            account_name=cons.ACCOUNT_NAME, account_key=cons.ACCOUNT_KEY)
 
         # Create a container called 'quickstartblobs'.
-        container_name = 'helloibrahim'
+        container_name = 'python_flask_demo'
         block_blob_service.create_container(container_name)
 
         # Set the permission so the blobs are public.
@@ -28,7 +29,8 @@ def run_sample():
 
         # Create a file in Documents to test the upload and download.
         local_path = os.path.expanduser("~/Documents")
-        local_file_name = "QuickStart_" + str(uuid.uuid4()) + ".txt"
+        file_name = "QuickStart_"
+        local_file_name = file_name + str(uuid.uuid4()) + ".txt"
         full_path_to_file = os.path.join(local_path, local_file_name)
 
         # Write text to the file.
