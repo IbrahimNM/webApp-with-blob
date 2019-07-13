@@ -20,7 +20,7 @@ def run_sample():
             account_name='ibrahim20', account_key='wMCFPXsA/klI6OGSrmdc1jgFIAJa3bRyD9mhtH31fS9OLCnlhGL8Er/TSc9uKrMMt1GYinFBkIuC5lP2krt/IA==')
 
         # Create a container called 'quickstartblobs'.
-        container_name = 'python_flask_demo'
+        container_name = 'helloibrahim'
         block_blob_service.create_container(container_name)
 
         # Set the permission so the blobs are public.
@@ -29,8 +29,7 @@ def run_sample():
 
         # Create a file in Documents to test the upload and download.
         local_path = os.path.expanduser("~/Documents")
-        file_name = "QuickStart_"
-        local_file_name = file_name + str(uuid.uuid4()) + ".txt"
+        local_file_name = "QuickStart_" + str(uuid.uuid4()) + ".txt"
         full_path_to_file = os.path.join(local_path, local_file_name)
 
         # Write text to the file.
