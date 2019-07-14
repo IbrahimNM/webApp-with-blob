@@ -3,7 +3,6 @@ import os
 import uuid
 import sys
 from azure.storage.blob import BlockBlobService, PublicAccess
-import constants as cons
 app = Flask(__name__)
 
 
