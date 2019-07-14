@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import os
 import uuid
 import sys
@@ -10,17 +10,32 @@ app = Flask(__name__)
 def hello():
     return "Hello World!"
 
-
+''' An endpoint to create a container inside a blob storage.
+    You need to specifiy and provife the account name and the account key 
+    of the blob storage. 
+    @params
+        name: the name of the new container.
+    @return:
+        success: The container has been created.
+        falied: The container was not created. 
+'''
 @app.route("/blob")
 def create_blob():
+    # get a container name parameter <name>
+    container_name = request.args.get('name') 
+    # set a default container name if the user did not provide it. 
+    if container_name is None:
+        container_name = 'test'
+    
     status = "failed"
     try:
+        
         # Create the BlockBlockService that is used to call the Blob service for the storage account
         block_blob_service = BlockBlobService(
             account_name='ibrahim20', account_key='wMCFPXsA/klI6OGSrmdc1jgFIAJa3bRyD9mhtH31fS9OLCnlhGL8Er/TSc9uKrMMt1GYinFBkIuC5lP2krt/IA==')
 
         # Create a container called 'quickstartblobs'.
-        container_name = 'helloibrahim'
+        #container_name = newname
         block_blob_service.create_container(container_name)
 
         # Set the permission so the blobs are public.
